@@ -13,7 +13,7 @@
             <a class="navbar-brand">
                 <small>
                     <i class="icon-leaf"></i>
-                    张涛一家常菜
+                    邓星家常菜
                 </small>
             </a><!-- /.brand -->
         </div><!-- /.navbar-header -->
