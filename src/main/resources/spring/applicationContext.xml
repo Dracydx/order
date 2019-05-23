@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- 数据源：DB连接配置 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://10.211.55.4:3306/order?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
-	 	<property name="username" value="dengxing" />
-        <property name="password" value="dengxing" />
+		<property name="url" value="jdbc:mysql://10.206.70.179:3306/order?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+	 	<property name="username" value="root" />
+        <property name="password" value="root" />
 	</bean>
 
 	<!-- 数据会话工厂：映射模型包-->
@@ -38,4 +38,27 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+
+	<!--&lt;!&ndash;定义被代理者&ndash;&gt;-->
+	<!--<bean id="me" class="com.lesson.utils.aop.Me"></bean>-->
+
+	<!--<bean id="slelpHelper" class="com.lesson.utils.aop.SleepHelper"></bean>-->
+
+ 	<!--<bean id="sleepPointCut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">-->
+		<!--<property name="pattern" value=".*Sleep"></property>-->
+	<!--</bean>-->
+
+
+	<!--<bean id="sleepHelperAdvisor" class="org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor">-->
+		<!--<property name="advice" ref="slelpHelper"> </property>-->
+		<!--<property name="pointcut" ref="sleepPointCut"></property>-->
+	<!--</bean>-->
+
+	<!--<bean id="proxyFactory" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+		<!--<property name="target" ref="me"></property>-->
+		<!--<property name="interceptorNames" value="sleepHelperAdvisor"></property>-->
+		<!--<property name="proxyInterfaces" value="com.lesson.utils.aop.Sleepable"></property>-->
+	<!--</bean>-->
+
+
 </beans>
